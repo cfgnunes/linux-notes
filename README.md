@@ -265,11 +265,13 @@ After that, update the GRUB configuration with:
 
     sudo evtest
 
-### Remapping keyboard button events
+### Remapping keyboard (ou mouse) button events
 
 Edit the file `/lib/udev/hwdb.d/60-keyboard.hwdb` then run:
 
     sudo udevadm hwdb --update
+
+Alternatively, you can create a file in `/etc/udev/hwdb.d/`, for example: `/etc/udev/hwdb.d/99-keyboard-remap.hwdb`.
 
 ### Reload/restart udev rules
 
