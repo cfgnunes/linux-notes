@@ -263,7 +263,7 @@ After that, update the GRUB configuration with:
 
 ### Test input device events (hid, mouse, keyboard)
 
-    evtest
+    sudo evtest
 
 ### Remapping keyboard button events
 
