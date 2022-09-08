@@ -1,4 +1,4 @@
-# Useful Linux commands and tricks
+# Linux notes: useful commands and tricks
 
 ## Disk operations (low level)
 
