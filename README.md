@@ -35,36 +35,6 @@ To clone HDDs with failures, use the parameter `conv=noerror`.
 
     efibootmgr -v
 
-### Make a MD5 sum of a directory's contents as one sum
-
-    find [DIRECTORY] -type f -exec md5sum {} \; | sort -k 2 | md5sum
-
-### Copy files with 'rsync'
-
-Default behavior: Any files that do not exist on the 'source' are copied. Rsync is extremely efficient in that only the changed parts of files are copied, and if the file is the same if it is not copied over at all.
-
-    rsync -a --progress [SRC_DIRECTORY] [DST_DIRECTORY]
-
-Ignore existing files:
-
-    rsync -a --progress --ignore-existing [SRC_DIRECTORY] [DST_DIRECTORY]
-
-Overwrite only newer files (update):
-
-    rsync -a --progress --update [SRC_DIRECTORY] [DST_DIRECTORY]
-
-Delete files that have been deleted from the source directory:
-
-    rsync -a --progress --delete [SRC_DIRECTORY] [DST_DIRECTORY]
-
-Copy files and make hard links for identical files on a 'REF_DIRECTORY' (useful for making backups):
-
-    rsync -a --progress --link-dest [REF_DIRECTORY] [SRC_DIRECTORY] [DST_DIRECTORY]
-
-### Replace duplicate files with hard links
-
-    rdfind -makehardlinks true [DIRECTORY_1] [DIRECTORY_2] ...
-
 ### Check partition filesystem
 
 PS.: the partition must be unmounted in all cases.
@@ -806,17 +776,47 @@ or:
 
 ## File manipulation
 
+### Copy files with 'rsync'
+
+Default behavior: Any files that do not exist on the 'source' are copied. Rsync is extremely efficient in that only the changed parts of files are copied, and if the file is the same if it is not copied over at all.
+
+    rsync -a --progress [SRC_DIRECTORY] [DST_DIRECTORY]
+
+Ignore existing files:
+
+    rsync -a --progress --ignore-existing [SRC_DIRECTORY] [DST_DIRECTORY]
+
+Overwrite only newer files (update):
+
+    rsync -a --progress --update [SRC_DIRECTORY] [DST_DIRECTORY]
+
+Delete files that have been deleted from the source directory:
+
+    rsync -a --progress --delete [SRC_DIRECTORY] [DST_DIRECTORY]
+
+Copy files and make hard links for identical files on a 'REF_DIRECTORY' (useful for making backups):
+
+    rsync -a --progress --link-dest [REF_DIRECTORY] [SRC_DIRECTORY] [DST_DIRECTORY]
+
+### Replace duplicate files with hard links
+
+    rdfind -makehardlinks true [DIRECTORY_1] [DIRECTORY_2] ...
+
 ### Find duplicate files
 
-List duplicate files (recursively):
+List duplicate files (faster than fdupes):
+
+    rdfind [DIRECTORY]
+
+List duplicate files:
 
     fdupes -r [DIRECTORY]
 
-List duplicate files (recursively) and asks the user which file to delete:
+List duplicate files and asks the user which file to delete:
 
     fdupes -r -d [DIRECTORY]
 
-### Renames multiple files
+### Rename multiple files
 
 Make a simulation:
 
@@ -843,6 +843,10 @@ Performs the rename operation:
 ### Change file modification date
 
     touch -t 200404281200 [FILES]
+
+### Make a MD5 sum of a directory's contents as one sum
+
+    find [DIRECTORY] -type f -exec md5sum {} \; | sort -k 2 | md5sum
 
 ## Batch execution
 
