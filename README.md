@@ -810,13 +810,17 @@ Copy files and make hard links for identical files on a 'REF_DIRECTORY' (useful 
 
 List duplicate files (faster than fdupes):
 
-    rdfind [DIRECTORY]
+    rdfind -dryrun true [DIRECTORY]
+
+List and delete duplicate files (faster than fdupes):
+
+    rdfind -deleteduplicates true [DIRECTORY]
 
 List duplicate files:
 
     fdupes -r [DIRECTORY]
 
-List duplicate files and asks the user which file to delete:
+List and delete duplicate files (asks the user which file to delete iteratively):
 
     fdupes -r -d [DIRECTORY]
 
