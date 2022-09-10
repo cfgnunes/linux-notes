@@ -61,6 +61,10 @@ Copy files and make hard links for identical files on a 'REF_DIRECTORY' (useful 
 
     rsync -a --progress --link-dest [REF_DIRECTORY] [SRC_DIRECTORY] [DST_DIRECTORY]
 
+### Replace duplicate files with hard links
+
+    rdfind -makehardlinks true [DIRECTORY_1] [DIRECTORY_2] ...
+
 ### Check partition filesystem
 
 PS.: the partition must be unmounted in all cases.
