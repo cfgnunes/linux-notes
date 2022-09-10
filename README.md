@@ -43,19 +43,19 @@ To clone HDDs with failures, use the parameter `conv=noerror`.
 
 Default behavior: Any files that do not exist on the 'source' are copied. Rsync is extremely efficient in that only the changed parts of files are copied, and if the file is the same if it is not copied over at all.
 
-    rsync -az --progress [SRC_DIRECTORY] [DST_DIRECTORY]
+    rsync -a --progress [SRC_DIRECTORY] [DST_DIRECTORY]
 
 Ignore existing files:
 
-    rsync -az --progress --ignore-existing [SRC_DIRECTORY] [DST_DIRECTORY]
+    rsync -a --progress --ignore-existing [SRC_DIRECTORY] [DST_DIRECTORY]
 
 Overwrite only newer files (update):
 
-    rsync -az --progress --update [SRC_DIRECTORY] [DST_DIRECTORY]
+    rsync -a --progress --update [SRC_DIRECTORY] [DST_DIRECTORY]
 
 Delete files that have been deleted from the source directory:
 
-    rsync -az --progress --delete [SRC_DIRECTORY] [DST_DIRECTORY]
+    rsync -a --progress --delete [SRC_DIRECTORY] [DST_DIRECTORY]
 
 ### Check partition filesystem
 
