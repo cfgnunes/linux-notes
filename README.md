@@ -39,7 +39,7 @@ To clone HDDs with failures, use the parameter `conv=noerror`.
 
     find [DIRECTORY] -type f -exec md5sum {} \; | sort -k 2 | md5sum
 
-### Copy files recursively  with 'rsync'
+### Copy files with 'rsync'
 
 Default behavior: Any files that do not exist on the 'source' are copied. Rsync is extremely efficient in that only the changed parts of files are copied, and if the file is the same if it is not copied over at all.
 
