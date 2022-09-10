@@ -53,6 +53,10 @@ Overwrite only newer files (update):
 
     rsync -az --progress --update [SRC_DIRECTORY] [DST_DIRECTORY]
 
+Delete files that have been deleted from the source directory:
+
+    rsync -az --progress --delete [SRC_DIRECTORY] [DST_DIRECTORY]
+
 ### Check partition filesystem
 
 PS.: the partition must be unmounted in all cases.
