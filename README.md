@@ -57,6 +57,10 @@ Delete files that have been deleted from the source directory:
 
     rsync -a --progress --delete [SRC_DIRECTORY] [DST_DIRECTORY]
 
+Copy files and make hard links for identical files on a 'REF_DIRECTORY' (useful for making backups):
+
+    rsync -a --progress --link-dest [REF_DIRECTORY] [SRC_DIRECTORY] [DST_DIRECTORY]
+
 ### Check partition filesystem
 
 PS.: the partition must be unmounted in all cases.
