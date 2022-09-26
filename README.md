@@ -1246,18 +1246,6 @@ Use the `hexedit` to search strings and save parts:
 
 ### Video operations with 'ffmpeg'
 
-H264 video suitable for Android smartphones with 320x480 resolution:
-
-    ffmpeg -threads 4 -y -i "input.mp4" -c:v libx264 -preset slow -tune fastdecode -profile:v baseline -level 3.0 -crf 25.0 -filter:v "scale=iw*sar*min(480/(iw*sar)\,320/ih):ih*min(480/(iw*sar)\,320/ih)" -c:a libvo_aacenc -b:a 128k "output.mp4"
-
-Video compatible with Windows XP without codecs (run with Windows Media Player):
-
-    ffmpeg -threads 4 -y -i "input.mp4" -c:v wmv1 -b:v 450k -c:a wmav1 "output.wmv"
-
-Video compatible with cell phones - 3gp:
-
-    ffmpeg -threads 4 -y -i "input.mp4" -c:v h263 -r 25 -s qcif -c:a libopencore_amrnb -b:a 12.20k -ar 8000 -ac 1 "output.3gp"
-
 Extract MP3 audio from video files:
 
     ffmpeg -threads 4 -y -i "input.mp4" -c:a libmp3lame -b:a 192k -ac 2 -vn "output.mp3"
@@ -1276,7 +1264,11 @@ Mix video and audio (also adds a 1.2 second audio delay):
 
 Video for Instagram (mix audio and video):
 
-    ffmpeg -threads 4 -y -i "input.mp4" -i "audio.wav" -c:v libx264 -preset slow -tune fastdecode -profile:v baseline -level 3.0 -crf 25.0 -r 30 -b:a 128k -filter:v "scale=iw*sar*min(1280/(iw*sar)\,720/ih):ih*min(1280/(iw*sar)\,720/ih)" -map 0:0 -map 1:0 -shortest "output.mp4"
+    ffmpeg -threads 4 -y -i "video.mp4" -i "audio.wav" -c:a aac -b:a 256k -ar 44100 -c:v libx264 -preset slow -tune fastdecode -pix_fmt yuv420p -level 3.0 -crf 25.0 -r 30 -filter:v "scale=iw*sar*min(2400/(iw*sar)\,1080/ih):ih*min(2400/(iw*sar)\,1080/ih)" -map 0:0 -map 1:0 -shortest "output.mp4"
+
+Video for Instagram (mix audio and image):
+
+    ffmpeg -threads 4 -y -i "audio.wav" -loop 1 -i "image.jpg" -c:a aac -b:a 256k -ar 44100 -c:v libx264 -preset slow -tune fastdecode -pix_fmt yuv420p -level 3.0 -crf 25.0 -r 30 -filter:v "scale=-2:1080" -shortest "output.mp4"
 
 ## Versioning
 
