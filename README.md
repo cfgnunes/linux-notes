@@ -1226,7 +1226,7 @@ Use the `hexedit` to search strings and save parts:
 
 ### Convert PDF to grayscale
 
-    gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dEmbedAllFonts=true -dSubsetFonts=true -dAutoRotatePages=/None -sColorConversionStrategy=Gray -dProcessColorModel=/DeviceGray -sOutputFile=output.pdf input.pdf
+    gs -q -dNOPAUSE -dBATCH -dSAFER -dFastWebView -sDEVICE=pdfwrite -dAutoRotatePages=/None -sColorConversionStrategy=Gray -dProcessColorModel=/DeviceGray -sOutputFile=output.pdf input.pdf
 
 ### Add bookmarks to PDF
 
