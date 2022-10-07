@@ -1228,6 +1228,10 @@ Use the `hexedit` to search strings and save parts:
 
     gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dEmbedAllFonts=true -dSubsetFonts=true -dAutoRotatePages=/None -sColorConversionStrategy=Gray -dProcessColorModel=/DeviceGray -sOutputFile=output.pdf input.pdf
 
+### Add bookmarks to PDF
+
+    gs -q -dNOPAUSE -dBATCH -dSAFER -dFastWebView -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile=output.pdf index.info input.pdf
+
 ### Replace strings in a PDF file
 
     qpdf --stream-data=uncompress input.pdf uncompressed.pdf
