@@ -535,7 +535,7 @@ For parts lifecycle, see: <https://snapcraft.io/docs/parts-lifecycle>
     iptables -F
     iptables -X
 
-    # Allow establishment of connections initialised by my outgoing packets
+    # Allow establishment of connections initialized by my outgoing packets
     iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 
     # Accept anything on localhost
@@ -543,10 +543,14 @@ For parts lifecycle, see: <https://snapcraft.io/docs/parts-lifecycle>
 
     # Individual ports tcp
     iptables -A INPUT -p tcp --dport 22 -j ACCEPT # SSH
-    iptables -A INPUT -p tcp --dport 5432 -s 200.131.4.0/24 -j ACCEPT # Postgresql
+    iptables -A INPUT -p tcp --dport 5432 -s 200.131.4.0/24 -j ACCEPT # PostgreSQL
     iptables -A INPUT -p tcp --dport 80 -s 200.131.4.0/24 -j ACCEPT # HTTP
     iptables -A INPUT -p tcp --dport 443 -s 200.131.4.0/24 -j ACCEPT # HTTPS
-    iptables -A INPUT -p tcp --dport 8180 -s 200.131.4.0/24 -j ACCEPT
+    iptables -A INPUT -p tcp --dport 8180 -s 200.131.4.0/24 -j ACCEPT # JBoss
+    iptables -A INPUT -p tcp --dport 5432 -s 200.131.38.128/25 -j ACCEPT # PostgreSQL (VPN)
+    iptables -A INPUT -p tcp --dport 80 -s 200.131.38.128/25 -j ACCEPT # HTTP (VPN)
+    iptables -A INPUT -p tcp --dport 443 -s 200.131.38.128/25 -j ACCEPT # HTTPS (VPN)
+    iptables -A INPUT -p tcp --dport 8180 -s 200.131.38.128/25 -j ACCEPT # JBoss (VPN)
 
     # Drop everything else
     iptables -A INPUT -j DROP
