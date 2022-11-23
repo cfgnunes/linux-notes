@@ -982,7 +982,7 @@ With regex:
 
 ### Display hardware informations (generate a hardware report)
 
-    sudo lshw -html > relatorio.html
+    sudo lshw -html > lshw.html
 
 ### Display BIOS informations
 
