@@ -905,7 +905,7 @@ Follow the idea:
     command4 &
     wait
 
-### Run a command every 3 seconds
+### Repeat a command every 3 seconds
 
 P.S: If you don't specify the parameter `n`, the default is 2 seconds.
 
