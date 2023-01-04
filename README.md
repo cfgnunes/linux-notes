@@ -51,15 +51,15 @@ Check a EXT4 partition:
 
     sudo fsck.ext4 -f /dev/sda1
 
-### Scan for badblocks
+### Scan for bad-blocks
 
-Scans for bad blocks by writing some patterns (0xaa, 0x55, 0xff, 0x00) on every
+Scans for bad-blocks by writing some patterns (0xaa, 0x55, 0xff, 0x00) on every
 block of the device read/write/corruption errors.
 And corruption means comparison with previously written data.
 
     sudo badblocks -s -w /dev/sdb
 
-### View files/disks in hexadeximal
+### View files/disks in hexadecimal
 
     sudo xxd /dev/sdb | less
 
@@ -397,6 +397,17 @@ Or also:
 Uses 90% of RAM before Linux kernel begins swapping:
 
     sudo echo "vm.swappiness=10" >> /etc/sysctl.conf
+
+### Firmware update
+
+To update the firmware for your devices, use:
+
+    sudo fwupdmgr get-updates
+    sudo fwupdmgr update
+
+To show the history of firmware updates:
+
+    fwupdmgr get-history
 
 ## Debian package
 
